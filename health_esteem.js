@@ -70,11 +70,20 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let totalQuestions = questions.length;
+let sectionScores = [0, 0, 0, 0]; // For each section
+let sectionTitles = ["Physical Health", "Emotional Health", "Spiritual Health", "Biohacking"];
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('start-quiz').addEventListener('click', startQuiz);
+    document.getElementById('back-button').addEventListener('click', goBack);
+});
+
+function startQuiz() {
+    document.querySelector('.cover-page').style.display = 'none';
+    document.querySelector('.quiz-container').style.display = 'flex';
     displayQuestion();
     updateProgressBar();
-});
+}
 
 function displayQuestion() {
     const question = questions[currentQuestionIndex];
@@ -82,7 +91,7 @@ function displayQuestion() {
     const questionText = document.querySelector('.question-text');
     const optionsContainer = document.querySelector('.options-container');
 
-    sectionTitle.textContent = `Section ${question.section}`;
+    sectionTitle.textContent = sectionTitles[question.section - 1]; // Adjusted for zero-based index
     questionText.textContent = question.label;
     optionsContainer.innerHTML = '';
 
@@ -93,7 +102,7 @@ function displayQuestion() {
         input.id = optionId;
         input.name = 'answer';
         input.value = i;
-        input.onchange = () => nextQuestion();
+        input.onchange = () => handleSelection(i);
 
         const label = document.createElement('label');
         label.htmlFor = optionId;
@@ -102,27 +111,53 @@ function displayQuestion() {
         optionsContainer.appendChild(input);
         optionsContainer.appendChild(label);
     }
+    document.getElementById('back-button').style.display = currentQuestionIndex > 0 ? 'block' : 'none'; // Show back button if not the first question
 }
 
 function nextQuestion() {
-  if (currentQuestionIndex < totalQuestions - 1) {
-      currentQuestionIndex++;
-  } else {
-      // Optionally handle the completion of the quiz differently
-      currentQuestionIndex = 0; // Reset or handle completion
-      alert("You've completed the quiz!");
-  }
-  displayQuestion();
-  updateProgressBar();
+    if (currentQuestionIndex < totalQuestions - 1) {
+        currentQuestionIndex++;
+        displayQuestion();
+        updateProgressBar();
+    } else {
+        showResults(); // Calculate and show results based on scores
+    }
+}
+
+function goBack() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        displayQuestion();
+        updateProgressBar();
+    }
+}
+
+function handleSelection(score) {
+    sectionScores[questions[currentQuestionIndex].section - 1] += score; // Accumulate scores by section
+    setTimeout(() => { // Fade effect
+        document.querySelector('.question-text').style.opacity = '0';
+        setTimeout(() => {
+            document.querySelector('.question-text').style.opacity = '1';
+            nextQuestion();
+        }, 100);
+    }, 100);
 }
 
 function updateProgressBar() {
-  const progressBar = document.querySelector('#progress-bar');
-  const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-  progressBar.style.width = `${progress}%`;
+    const progressBar = document.querySelector('#progress-bar');
+    const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+    progressBar.style.width = `${progress}%`;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  displayQuestion(); // Initialize the first question
-  updateProgressBar(); // Initialize the progress bar
-});
+function showResults() {
+    // Calculate total score and decide the result
+    let totalScore = sectionScores.reduce((a, b) => a + b, 0);
+    let resultText;
+    if (totalScore < 80) resultText = "Result A: 0-79";
+    else if (totalScore < 120) resultText = "Result B: 80-119";
+    else if (totalScore < 160) resultText = "Result C: 120-159";
+    else resultText = "Result D: 160+";
+
+    alert(resultText); // Show the results
+    // Reset for another round or offer to close
+}
