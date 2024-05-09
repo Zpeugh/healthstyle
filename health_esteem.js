@@ -68,97 +68,61 @@ const questions = [
   },
 ]
 
-function populateQuestions() {
-  questions.forEach((q, index) => {
-    // Note the added index parameter here.
-    const container = document.createElement("div")
-    container.className = "question-container"
+let currentQuestionIndex = 0;
+let totalQuestions = questions.length;
 
-    const label = document.createElement("span")
-    label.className = "question-label"
-    label.innerText = q.label
+document.addEventListener("DOMContentLoaded", () => {
+    displayQuestion();
+    updateProgressBar();
+});
 
-    const radioGroup = document.createElement("div")
-    radioGroup.className = "radio-group"
+function displayQuestion() {
+    const question = questions[currentQuestionIndex];
+    const sectionTitle = document.querySelector('.section-title');
+    const questionText = document.querySelector('.question-text');
+    const optionsContainer = document.querySelector('.options-container');
+
+    sectionTitle.textContent = `Section ${question.section}`;
+    questionText.textContent = question.label;
+    optionsContainer.innerHTML = '';
 
     for (let i = 1; i <= 5; i++) {
-      const radioContainer = document.createElement("label")
-      radioContainer.className = "radio-container"
-      radioContainer.innerText = i
+        const optionId = `option-${i}`;
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.id = optionId;
+        input.name = 'answer';
+        input.value = i;
+        input.onchange = () => nextQuestion();
 
-      const input = document.createElement("input")
-      input.type = "radio"
-      input.name = `question${index}` // Unique name for each question based on the index.
-      input.value = i
+        const label = document.createElement('label');
+        label.htmlFor = optionId;
+        label.textContent = i;
 
-      const checkmark = document.createElement("span")
-      checkmark.className = "checkmark"
-
-      radioContainer.appendChild(input)
-      radioContainer.appendChild(checkmark)
-      radioGroup.appendChild(radioContainer)
+        optionsContainer.appendChild(input);
+        optionsContainer.appendChild(label);
     }
-
-    container.appendChild(label)
-    container.appendChild(radioGroup)
-    document.getElementById(`questionForm${q.section}`).appendChild(container)
-  })
 }
 
-function showNextPage() {
-  let current = document.querySelector('.container:not([style*="display: none"])');
-  let next = current.nextElementSibling;
-  while (next && !next.classList.contains("questionPage") && !next.classList.contains("resultPage")) {
-    next = next.nextElementSibling;
+function nextQuestion() {
+  if (currentQuestionIndex < totalQuestions - 1) {
+      currentQuestionIndex++;
+  } else {
+      // Optionally handle the completion of the quiz differently
+      currentQuestionIndex = 0; // Reset or handle completion
+      alert("You've completed the quiz!");
   }
-  if (next) {
-    current.style.display = "none";
-    next.style.display = "block";
-    currentPage++;
-  }
-
-  if (currentPage === 4) {
-    calculateScores(); // Directly call calculateScores here
-  }
+  displayQuestion();
+  updateProgressBar();
 }
 
-function calculateScores() {
-  let scores = [];
-  questions.forEach((q, index) => {
-    const radios = document.getElementsByName(`question${index}`);
-    for (let radio of radios) {
-      if (radio.checked) {
-        scores.push(parseInt(radio.value));
-        break; // Stop once you find the checked radio
-      }
-    }
-  });
-
-  let sections = [0, 0, 0, 0]; // For four sections
-  scores.forEach((score, index) => {
-    sections[questions[index].section - 1] += score; // Use section from questions array to index
-  });
-
-  showResults(sections.reduce((a, b) => a + b, 0), sections);
+function updateProgressBar() {
+  const progressBar = document.querySelector('#progress-bar');
+  const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+  progressBar.style.width = `${progress}%`;
 }
 
-function showResults(totalScore, sectionScores) {
-  const resultPage = totalScore <= 79 ? "resultPage1" :
-                     totalScore <= 119 ? "resultPage2" :
-                     totalScore <= 159 ? "resultPage3" :
-                     "resultPage4";
-  hideAllPages();
-  document.getElementById(resultPage).style.display = "block";
-  sectionScores.forEach((score, i) => {
-    document.getElementById(`section${i + 1}Score${resultPage.charAt(resultPage.length - 1)}`).textContent = score;
-  });
-  document.getElementById(`totalScore${resultPage.charAt(resultPage.length - 1)}`).textContent = totalScore;
-}
-
-function hideAllPages() {
-  document.querySelectorAll(".container").forEach(page => {
-    page.style.display = "none";
-  });
-}
-
-document.addEventListener("DOMContentLoaded", populateQuestions);
+document.addEventListener("DOMContentLoaded", () => {
+  displayQuestion(); // Initialize the first question
+  updateProgressBar(); // Initialize the progress bar
+});

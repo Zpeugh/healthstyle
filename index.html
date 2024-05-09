@@ -1,135 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Health Esteem</title>
     <link rel="stylesheet" href="health_esteem.css">
     <script src="health_esteem.js"></script>
   </head>
+
   <body>
-    <div class="container" id="coverPage">
-      <h1>What is your <i>Health Esteem?</i></h1>
-      <p>
-        Your Health Esteem is the conscious appreciation and proactive engagement with your holistic well-being,
-        encompassing physical, mental, emotional, and spiritual health. It reflects the degree to which you value your
-        overall health, manifesting in daily choices and behaviors aimed at nurturing, preserving, and enhancing your
-        quality of life. Health Esteem encourages a balanced and informed approach to health, wellness, and the
-        biological aging process, integrating modern scientific understanding with personal intuition and self-care
-        practices to achieve a state of optimal well-being and self-fulfillment in an ever-evolving world.
-      </p>
-      <p>
-        <strong>Why should I learn about my unique Health Esteem rating?</strong><br /><br />When you've cultivated a
-        healthy Health Esteem, it often leads to optimal health, slows biological aging, and enhances your sense of
-        self, beauty, and authenticity. You can begin building upon and improving your health esteem at any age!
-      </p>
-      <button onclick="showNextPage()">
-        <strong style="font-size: 26pt">CLICK HERE</strong> TO LEARN MORE AND TO TAKE YOUR
-        <strong style="font-size: 26pt">FREE</strong> HEALTH ESTEEM QUIZ
-      </button>
-    </div>
-    <div class="container questionPage" id="questionPage1">
-      <h1>Section 1: Physical Health</h1>
-      <form id="questionForm1"></form>
-      <button type="button" onclick="showNextPage()">Next</button>
-    </div>
-    <div class="container questionPage" id="questionPage2">
-      <h1>Section 2: Emotional Health</h1>
-      <form id="questionForm2"></form>
-      <button type="button" onclick="showNextPage()">Next</button>
-    </div>
-    <div class="container questionPage" id="questionPage3">
-      <h1>Section 3: Spiritual Health</h1>
-      <form id="questionForm3"></form>
-      <button type="button" onclick="showNextPage()">Next</button>
-    </div>
-    <div class="container questionPage" id="questionPage4">
-      <h1>Section 4: Biohacking</h1>
-      <form id="questionForm4"></form>
-      <button type="button" onclick="showNextPage()">Next</button>
-    </div>
-    <div class="container resultPage" id="resultPage1" style="display: none">
-      <h2>
-        Section 1 Physical Health: <span id="section1Score1"></span>
-        <br />Section 2 Emotional Health:
-        <span id="section2Score1"></span>
-        <br />Section 3 Spiritual Health: <span id="section3Score1"></span><br /><u
-          >Section 4 Biohacking: <span id="section4Score1"></span></u
-        ><br /><strong style="font-size: 20pt">Your Health Esteem score is: <span id="totalScore1"></span></strong>
-      </h2>
-      <h2>Hey beautiful, we can see you may need a little help increasing your Health Esteem.</h2>
-      <h1>
-        Your <strong>Health Esteem quiz results indicate that you are A WORK IN PROGRESS</strong> and there is a need
-        for improvement.
-      </h1>
-      <p>
-        Please do not fret.
-        <br />
-        <br />
-        We get that there are a lot of unknowns and roadblocks that can make healthy,
-        <br />
-        successful self-care routines and approaches to biological aging challenging. We are here to help elevate
-        you!<br /><br />If you are looking for guidance, a trusted sounding board, and someone to simplify how you can
-        improve your health and style it so you can be the best version of yourself, Healthstyle By Dr. Kenna is here to
-        help! Please reach out. We see your potential and are ready, willing, and able to be your health coach, guide,
-        and advocate!
-      </p>
-    </div>
-    <div class="container resultPage" id="resultPage2" style="display: none">
-      <h2>
-        Section 1 Physical Health: <span id="section1Score2"></span><br />Section 2 Emotional Health:
-        <span id="section2Score2"></span><br />Section 3 Spiritual Health: <span id="section3Score2"></span><br /><u
-          >Section 4 Biohacking: <span id="section4Score2"></span></u
-        ><br /><strong style="font-size: 20pt">Your Health Esteem score is: <span id="totalScore2"></span></strong>
-      </h2>
-      <h2>Hey there! We can see you are working on your health and have identified there is room for improvement.</h2>
-      <h1>Your <strong>Health Esteem is rated as Middle of the Road- Average.</strong></h1>
-      <p>
-        We can see the efforts you are putting into your self-care and how special you are! There is room for
-        improvement when it comes to supporting your self-care, health, and biological aging process. We understand that
-        you are unique and that your body may need something that has not been identified yet. It could be as simple as
-        identifying an inflammatory food source, setting some healthy boundaries, redefining your sleep hygiene, or
-        taking a nutritional supplement that can help you stay more focused and energized. Healthstyle By Dr. Kenna
-        helps people like yourself figure out what's missing and what needs to be improved to improve their health. We
-        take all the guessing out of the process and use information, aka data, to help empower our clients.
-        <br /><br />Optimizing one's health doesn't have to be overwhelming; it can be inspiring, fun, energizing, and,
-        with consistency, transformative. <br /><br />If there is anything we can do to help you learn how to optimize
-        your health, self-care, and biological aging approach, please let Healthstyle know; we are here to help you be
-        the best version of yourself.
-      </p>
-    </div>
-    <div class="container resultPage" id="resultPage3" style="display: none">
-      <h2>
-        Section 1 Physical Health: <span id="section1Score3"></span><br />Section 2 Emotional Health:
-        <span id="section2Score3"></span><br />Section 3 Spiritual Health: <span id="section3Score3"></span><br /><u
-          >Section 4 Biohacking: <span id="section4Score3"></span></u
-        ><br /><strong style="font-size: 20pt">Your Health Esteem score is: <span id="totalScore3"></span></strong>
-      </h2>
-      <h2>Wow, we can tell you are invested in your health!</h2>
-      <h1>Your <strong>Health Esteem is rated as solidly- GOOD.</strong></h1>
-      <p>
-        Keep up the good work! We can see that you are engaged and working on your health regularly. Caring for your
-        health in ways that give optimal results and slow your biological aging doesn't just involve eating right and
-        exercising; it requires a 360-degree holistic approach that anyone can easily do. Healthstyle By Dr. Kenna helps
-        people identify their health blind spots and transform their approach. If you want to improve your approach to
-        supporting your health and biological aging process, please know that Healthstyle is here to help support you.
-      </p>
-    </div>
-    <div class="container resultPage" id="resultPage4" style="display: none">
-      <h2>
-        Section 1 Physical Health: <span id="section1Score4"></span><br />Section 2 Emotional Health:
-        <span id="section2Score4"></span><br />Section 3 Spiritual Health: <span id="section3Score4"></span><br /><u
-          >Section 4 Biohacking: <span id="section4Score4"></span></u
-        ><br /><strong style="font-size: 20pt">Your Health Esteem score is: <span id="totalScore4"></span></strong>
-      </h2>
-      <h1>Congratulations, your <strong>Health Esteem is rated as- EXCELLENT!</strong></h1>
-      <p>
-        We can tell you are a ROCKSTAR and have made taking care of your health a top priority. You probably already
-        know the keys to maintaining your health, but just in case you don't here they are:<br />-Time<br />-Dedication<br />-Consistency<br />-Knowledge
-        that health is malleable.<br /><br />Having an understanding that the body may need something different than it
-        did before and being willing to pivot and adapt to its needs helps optimize health and biological aging.<br /><br />Please
-        let Healthstyle know if there is anything we can do to help better support you with optimizing your health and
-        biological aging process. We LOVE supporting ROCKSTARS!
-      </p>
+    <div class="quiz-container">
+      <div id="progress-bar-background"></div>
+      <div id="progress-bar"></div>
+      <div class="question-container">
+        <h1 class="section-title"></h1>
+        <p class="question-text"></p>
+        <div class="options-container">
+          <!-- Radio buttons will be injected here -->
+        </div>
+      </div>
     </div>
   </body>
+
 </html>
