@@ -223,43 +223,75 @@ function updateProgressBar() {
     progressBar.style.width = `${progress}%`;
 }
 
+function getSectionScoreClass(percentage) {
+    if (percentage < 40) return 'section-score low';
+    if (percentage < 60) return 'section-score average';
+    if (percentage < 80) return 'section-score good';
+    return 'section-score excellent';
+  }
+
+function getSectionScoreContent(percent) {
+    if (percent < 40) return 'WIP';
+    if (percent < 60) return 'AVERAGE';
+    if (percent < 80) return 'GOOD';
+    return 'EXCELLENT';
+}
+
 function showResults() {
     // Calculate total score and decide the result
-    for (let i = 1; i <= 4; i++) {
-        document.querySelector(`#section-${i}-sum`).textContent = sectionScores[i - 1];
-    }
-
-
     let totalScore = sectionScores.reduce((a, b) => a + b, 0);
     let resultText;
     let resultBody;
-    switch (totalScore) {
-        case totalScore < 80:
-            resultText = result0.header;
-            resultBody = result0.body;
-            break;
-        case totalScore < 120:
-            resultText = result1.header;
-            resultBody = result1.body;
-            break;
-        case totalScore < 160:
-            resultText = result2.header;
-            resultBody = result2.body;
-            break;
-        default:
-            resultText = result3.header;
-            resultBody = result3.body;
+    let resultClass;
+    switch (true) {
+      case totalScore < 80:
+        resultText = result0.header;
+        resultBody = result0.body;
+        resultClass = 'low';
+        break;
+      case totalScore < 120:
+        resultText = result1.header;
+        resultBody = result1.body;
+        resultClass = 'average';
+        break;
+      case totalScore < 160:
+        resultText = result2.header;
+        resultBody = result2.body;
+        resultClass = 'good';
+        break;
+      default:
+        resultText = result3.header;
+        resultBody = result3.body;
+        resultClass = 'excellent';
     }
+
+    // Show section scores as percentages
+    const maxScorePerSection = 25 * 5; // 25 questions, 5 points each
+    const sectionPercentages = sectionScores.map(score => Math.round((score / maxScorePerSection) * 100));
+
     document.querySelector('.quiz-container').style.display = 'none';
     document.querySelector('.results-page').style.display = 'flex';
     document.getElementById('results-header').textContent = resultText;
+    document.getElementById('results-header').className = resultClass;
     document.getElementById('results-body').innerHTML = resultBody;
-}
 
-function restartQuiz() {
+    // Color code section scores
+    document.getElementById('section-1-sum').className = getSectionScoreClass(sectionPercentages[0]);
+    document.getElementById('section-2-sum').className = getSectionScoreClass(sectionPercentages[1]);
+    document.getElementById('section-3-sum').className = getSectionScoreClass(sectionPercentages[2]);
+    document.getElementById('section-4-sum').className = getSectionScoreClass(sectionPercentages[3]);
+
+    document.getElementById('section-1-sum').textContent = getSectionScoreContent(sectionPercentages[0]);
+    document.getElementById('section-2-sum').textContent = getSectionScoreContent(sectionPercentages[1]);
+    document.getElementById('section-3-sum').textContent = getSectionScoreContent(sectionPercentages[2]);
+    document.getElementById('section-4-sum').textContent = getSectionScoreContent(sectionPercentages[3]);
+  }
+
+
+
+  function restartQuiz() {
     currentQuestionIndex = 0;
     sectionScores = [0, 0, 0, 0];
     document.querySelector('.results-page').style.display = 'none';
     document.querySelector('.cover-page').style.display = 'flex';
-}
-
+  }

@@ -1,7 +1,7 @@
 body, html {
-  font-family: 'Clarkson', "Helvetica Nue";
+  font-family: "Clarkson", "Helvetica Nue", sans-serif;
   color: #333;
-  background-color: #fff;
+  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,18 +10,22 @@ body, html {
   height: 100vh;
 }
 
-.cover-page {
+.cover-page, .results-page, .quiz-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.cover-page {
   height: 100vh;
 }
 
 .quiz-container {
   display: none; /* Hidden until the quiz starts */
-  width: 90%;
-  max-width: 600px;
   font-size: 1.4em;
 }
 
@@ -31,15 +35,14 @@ body, html {
   border-radius: 3px;
   overflow: hidden;
   width: 100%; /* Ensures the progress bar container is full width */
-  margin-top: 25px; /* Add some space above the progress bar */
+  margin-top: 50px; /* Add some space above the progress bar */
 }
 
 #progress-bar {
   height: 8px;
-  margin-top: -8px;
+  margin-top: -8px; /* Pull the progress bar up to overlap the background */
   background-color: #000;
   border-radius: 3px;
-  overflow: hidden;
   width: 0%; /* Ensures the progress bar container is full width */
 }
 
@@ -51,7 +54,7 @@ body, html {
 
 input[type="radio"] + label {
   padding: 10px;
-  width:25px;
+  width: 25px;
   border: 1px solid #000;
   border-radius: 5px;
   cursor: pointer;
@@ -59,7 +62,6 @@ input[type="radio"] + label {
 }
 
 .section-title {
-  text-align: center;
   margin: 25px 0;
 }
 
@@ -87,13 +89,7 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="radio"]:checked + label {
-  background-color: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-input[type="radio"]:hover + label {
+input[type="radio"]:checked + label, input[type="radio"]:hover + label {
   background-color: #000;
   color: #fff;
   cursor: pointer;
@@ -129,9 +125,84 @@ button:hover {
 }
 
 .results-page {
+  display: none; /* Hidden until the results are shown */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+}
+
+.results-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+#results-subheader {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.section-scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.section-score-row {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  width: 50%;
+  padding-left: 25%;
+}
+
+.section-score-column {
+  font-size: 1.2em;
+}
+
+#results-body {
+  margin-top: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+h2, h3 {
+  margin: 5px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.section-score {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.low {
+  background-color: #d13f0581;
+  color: #d13f05;
+}
+
+.average {
+  background-color: #e4ba3c7c;
+  color: #e4ba3c;
+}
+
+.good {
+  background-color: #63830c79;
+  color: #63830c;
+}
+
+.excellent {
+  background-color: #0542147c;
+  color: #054214;
 }
