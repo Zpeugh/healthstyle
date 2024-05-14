@@ -18,12 +18,11 @@ body, html {
   height: 100vh;
 }
 
-
 .quiz-container {
   display: none; /* Hidden until the quiz starts */
   width: 90%;
   max-width: 600px;
-  font-size: 1.6em;
+  font-size: 1.4em;
 }
 
 #progress-bar-background {
@@ -32,15 +31,16 @@ body, html {
   border-radius: 3px;
   overflow: hidden;
   width: 100%; /* Ensures the progress bar container is full width */
+  margin-top: 25px; /* Add some space above the progress bar */
 }
 
 #progress-bar {
   height: 8px;
+  margin-top: -8px;
   background-color: #000;
   border-radius: 3px;
   overflow: hidden;
   width: 0%; /* Ensures the progress bar container is full width */
-  margin-top: -8px; /* Moves the progress bar up to overlap the background */
 }
 
 .options-container label {
@@ -63,11 +63,17 @@ input[type="radio"] + label {
   margin: 25px 0;
 }
 
+.question-container {
+  align-items: center;
+  justify-content: center;
+}
+
 .question-text {
+  align-content: center;
   text-align: center;
-  margin: 20px 0;
+  margin: 25px 0;
   width: 500px;
-  height: 100px;
+  height: 125px;
 }
 
 .options-container {
@@ -95,7 +101,7 @@ input[type="radio"]:hover + label {
 
 button {
   padding: 10px 20px;
-  font-size: em;
+  font-size: 1.4em;
   margin-top: 20px;
   cursor: pointer;
   background-color: #fff;
@@ -120,4 +126,12 @@ button:hover {
 #back-button:hover {
   background-color: transparent; /* Maintain a clean look on hover */
   color: #000; /* Change as needed */
+}
+
+.results-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

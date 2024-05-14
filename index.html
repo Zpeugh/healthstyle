@@ -4,7 +4,6 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Health Esteem</title>
     <link rel="stylesheet" href="health_esteem.css">
-    <script src="health_esteem.js"></script>
 </head>
 <body>
     <div class="cover-page">
@@ -12,21 +11,28 @@
         <button id="start-quiz">Start Quiz</button>
     </div>
     <div class="quiz-container">
-        <div id="progress-bar-background"></div>
-        <div id="progress-bar"></div>
         <div class="question-container">
             <h1 class="section-title"></h1>
             <p class="question-text"></p>
             <div class="options-container">
                 <!-- Radio buttons will be injected here -->
             </div>
-            <button id="back-button">&#8592;</button>  <!-- Unicode Left Arrow -->
+            <div class="footer">
+                <!-- <button id="back-button">&#8592;</button> -->
+                <div id="progress-bar-background"></div>
+                <div id="progress-bar"></div>
+            </div>
         </div>
     </div>
+    <br>
+
+
     <div class="results-page" style="display: none;">
       <h1>Quiz Results</h1>
       <p id="results-text"></p>
-        <button onclick="restartQuiz()">Restart Quiz</button>
+      <button onclick="restartQuiz()">Restart Quiz</button>
     </div>
+
+    <script src="health_esteem.js"></script>
 </body>
 </html>
