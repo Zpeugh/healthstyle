@@ -134,13 +134,20 @@ button:hover {
 }
 
 .results-container {
-  margin-top: 20px;
+  margin-top: 5px;
   width: 100%;
 }
 
 #results-subheader {
-  margin: 20px 0;
   text-align: center;
+}
+
+#results-header {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-bottom: 25px;
 }
 
 .section-scores {
@@ -154,8 +161,9 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
-  padding-left: 25%;
+  width: 60%;
+  padding-left: 20%;
+  margin-bottom: 2px;
 }
 
 .section-score-column {
@@ -163,7 +171,8 @@ button:hover {
 }
 
 #results-body {
-  margin-top: 20px;
+  margin-top: 50px;
+  text-align: left;
 }
 
 h1 {
@@ -183,26 +192,27 @@ button {
 }
 
 .section-score {
-  padding: 5px 10px;
+  padding: 3px 10px;
   border-radius: 5px;
+  border: 1px solid;
 }
 
 .low {
-  background-color: #d13f0581;
+  /* background-color: #d13f0581; */
   color: #d13f05;
 }
 
 .average {
-  background-color: #e4ba3c7c;
+  /* background-color: #e4ba3c7c; */
   color: #e4ba3c;
 }
 
 .good {
-  background-color: #63830c79;
+  /* background-color: #63830c79; */
   color: #63830c;
 }
 
 .excellent {
-  background-color: #0542147c;
+  /* background-color: #0542147c; */
   color: #054214;
 }
