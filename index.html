@@ -26,11 +26,22 @@
     </div>
     <br>
 
-
     <div class="results-page" style="display: none;">
-      <h1>Quiz Results</h1>
-      <p id="results-text"></p>
-      <button onclick="restartQuiz()">Restart Quiz</button>
+        <h1>Your Health Esteem Results</h1>
+        <div class="results-container">
+            <p id="results-text"></p>
+            <div id="results-subheader">
+                <h2>Your Health Esteem is: <span id="results-header"></span></h2>
+                <h3>Section 1 - Physical Health: <span id="section-1-sum" class="section-score"></span></h3>
+                <h3>Section 2 - Emotional Health: <span id="section-2-sum" class="section-score"></span></h3>
+                <h3>Section 3 - Spiritual Health: <span id="section-3-sum" class="section-score"></span></h3>
+                <h3>Section 4 - Biohacking Health: <span id="section-4-sum" class="section-score"></span></h3>
+                <div id="results-body">
+                    <!-- Results will be injected here -->
+                </div>
+            </div>
+        </div>
+        <button onclick="restartQuiz()">Restart Quiz</button>
     </div>
 
     <script src="health_esteem.js"></script>

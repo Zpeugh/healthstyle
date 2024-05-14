@@ -68,6 +68,80 @@ const questions = [
   // },
 ]
 
+const result0 = {
+    header: "A WORK IN PROGRESS",
+    body: `
+        <h2>Hey beautiful, we can see you may need a little help increasing your Health Esteem.</h2>
+        <h1>
+            Your <strong>Health Esteem quiz results indicate that you are A WORK IN PROGRESS</strong> and there is a need
+            for improvement.
+        </h1>
+        <p>
+            Please do not fret.
+            <br />
+            <br />
+            We get that there are a lot of unknowns and roadblocks that can make healthy,
+            <br />
+            successful self-care routines and approaches to biological aging challenging. We are here to help elevate
+            you!<br /><br />If you are looking for guidance, a trusted sounding board, and someone to simplify how you can
+            improve your health and style it so you can be the best version of yourself, Healthstyle By Dr. Kenna is here to
+            help! Please reach out. We see your potential and are ready, willing, and able to be your health coach, guide,
+            and advocate!
+        </p>
+    `
+}
+
+const result1 = {
+    header: "Middle of the Road- Average",
+    body: `
+        <h2>Hey there! We can see you are working on your health and have identified there is room for improvement.</h2>
+        <h1>Your <strong>Health Esteem is rated as Middle of the Road- Average.</strong></h1>
+        <p>
+            We can see the efforts you are putting into your self-care and how special you are! There is room for
+            improvement when it comes to supporting your self-care, health, and biological aging process. We understand that
+            you are unique and that your body may need something that has not been identified yet. It could be as simple as
+            identifying an inflammatory food source, setting some healthy boundaries, redefining your sleep hygiene, or
+            taking a nutritional supplement that can help you stay more focused and energized. Healthstyle By Dr. Kenna
+            helps people like yourself figure out what's missing and what needs to be improved to improve their health. We
+            take all the guessing out of the process and use information, aka data, to help empower our clients.
+            <br /><br />Optimizing one's health doesn't have to be overwhelming; it can be inspiring, fun, energizing, and,
+            with consistency, transformative. <br /><br />If there is anything we can do to help you learn how to optimize
+            your health, self-care, and biological aging approach, please let Healthstyle know; we are here to help you be
+            the best version of yourself.
+        </p>
+    `
+}
+
+const result2 = {
+    header: "GOOD",
+    body: `
+        <h2>Wow, we can tell you are invested in your health!</h2>
+        <h1>Your <strong>Health Esteem is rated as solidly- GOOD.</strong></h1>
+        <p>
+            Keep up the good work! We can see that you are engaged and working on your health regularly. Caring for your
+            health in ways that give optimal results and slow your biological aging doesn't just involve eating right and
+            exercising; it requires a 360-degree holistic approach that anyone can easily do. Healthstyle By Dr. Kenna helps
+            people identify their health blind spots and transform their approach. If you want to improve your approach to
+            supporting your health and biological aging process, please know that Healthstyle is here to help support you.
+        </p>
+    `
+}
+
+const result3 = {
+    header: "EXCELLENT",
+    body: `
+    <h1>Congratulations, your <strong>Health Esteem is rated as- EXCELLENT!</strong></h1>
+    <p>
+        We can tell you are a ROCKSTAR and have made taking care of your health a top priority. You probably already
+        know the keys to maintaining your health, but just in case you don't here they are:<br />-Time<br />-Dedication<br />-Consistency<br />-Knowledge
+        that health is malleable.<br /><br />Having an understanding that the body may need something different than it
+        did before and being willing to pivot and adapt to its needs helps optimize health and biological aging.<br /><br />Please
+        let Healthstyle know if there is anything we can do to help better support you with optimizing your health and
+        biological aging process. We LOVE supporting ROCKSTARS!
+    </p>
+    `
+}
+
 let currentQuestionIndex = 0;
 let totalQuestions = questions.length;
 let sectionScores = [0, 0, 0, 0]; // For each section
@@ -75,7 +149,7 @@ let sectionTitles = ["Physical Health", "Emotional Health", "Spiritual Health", 
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('start-quiz').addEventListener('click', startQuiz);
-    document.getElementById('back-button').addEventListener('click', goBack);
+    // document.getElementById('back-button').addEventListener('click', goBack);
 });
 
 function startQuiz() {
@@ -151,16 +225,35 @@ function updateProgressBar() {
 
 function showResults() {
     // Calculate total score and decide the result
+    for (let i = 1; i <= 4; i++) {
+        document.querySelector(`#section-${i}-sum`).textContent = sectionScores[i - 1];
+    }
+
+
     let totalScore = sectionScores.reduce((a, b) => a + b, 0);
     let resultText;
-    if (totalScore < 80) resultText = "Result A: 0-79";
-    else if (totalScore < 120) resultText = "Result B: 80-119";
-    else if (totalScore < 160) resultText = "Result C: 120-159";
-    else resultText = "Result D: 160+";
-
+    let resultBody;
+    switch (totalScore) {
+        case totalScore < 80:
+            resultText = result0.header;
+            resultBody = result0.body;
+            break;
+        case totalScore < 120:
+            resultText = result1.header;
+            resultBody = result1.body;
+            break;
+        case totalScore < 160:
+            resultText = result2.header;
+            resultBody = result2.body;
+            break;
+        default:
+            resultText = result3.header;
+            resultBody = result3.body;
+    }
     document.querySelector('.quiz-container').style.display = 'none';
     document.querySelector('.results-page').style.display = 'flex';
-    document.getElementById('results-text').textContent = resultText;
+    document.getElementById('results-header').textContent = resultText;
+    document.getElementById('results-body').innerHTML = resultBody;
 }
 
 function restartQuiz() {
