@@ -10,28 +10,32 @@
         <p>Welcome to the Health Esteem Quiz! This quiz will help you understand various aspects of your well-being.</p>
         <button id="start-quiz">Start Quiz</button>
     </div>
-    <div class="quiz-container">
+    <div class="quiz-container" style="display: none;">
         <div class="question-container">
-            <h1 class="section-title"></h1>
-            <p class="question-text"></p>
-            <div class="options-container">
-                <!-- Radio buttons will be injected here -->
+            <div class="back-button-container">
+                <img src="back.webp" alt="Back" id="back-button">
             </div>
-            <div class="footer">
-                <!-- <button id="back-button">&#8592;</button> -->
-                <div id="progress-bar-background"></div>
-                <div id="progress-bar"></div>
+            <div class="question-content">
+                <h1 class="section-title"></h1>
+                <p class="question-text"></p>
+                <div class="options-container">
+                    <!-- Radio buttons will be injected here -->
+                </div>
+                <div class="footer">
+                    <div id="progress-bar-background"></div>
+                    <div id="progress-bar"></div>
+                </div>
             </div>
         </div>
     </div>
     <br>
 
     <div class="results-page" style="display: none;">
-        <h2>Health Esteem Results</h1>
+        <h2>Health Esteem Results</h2>
         <div class="results-container">
             <p id="results-text"></p>
             <div id="results-subheader">
-                <h3 style="background-color: transparent !important;" id="results-header"></h2>
+                <h3 style="background-color: transparent !important;" id="results-header"></h3>
                 <div class="section-score-row">
                     <span class="section-score-column">Physical:</span>
                     <span class="section-score-column" id="section-1-sum" class="section-score"></span>

@@ -25,28 +25,6 @@ body, html {
   height: 100%
 }
 
-.quiz-container {
-  display: none; /* Hidden until the quiz starts */
-  font-size: 1.4em;
-}
-
-#progress-bar-background {
-  height: 8px;
-  background-color: #ccc;
-  border-radius: 3px;
-  overflow: hidden;
-  width: 100%; /* Ensures the progress bar container is full width */
-  margin-top: 50px; /* Add some space above the progress bar */
-}
-
-#progress-bar {
-  height: 8px;
-  margin-top: -8px; /* Pull the progress bar up to overlap the background */
-  background-color: #000;
-  border-radius: 3px;
-  width: 0%; /* Ensures the progress bar container is full width */
-}
-
 .options-container label {
   width: 50px; /* Ensures each label has a fixed width */
   text-align: center;
@@ -64,11 +42,6 @@ input[type="radio"] + label {
 
 .section-title {
   margin: 25px 0;
-}
-
-.question-container {
-  align-items: center;
-  justify-content: center;
 }
 
 .question-text {
@@ -111,19 +84,6 @@ button {
 button:hover {
   background-color: #000;
   color: #fff;
-}
-
-#back-button {
-  display: none; /* Initially hidden */
-  font-size: 2em; /* Adjust the font size if needed */
-  padding: 10px 15px; /* Adjust padding to better fit the arrow shape */
-  background-color: transparent;
-  border: none;
-}
-
-#back-button:hover {
-  background-color: transparent; /* Maintain a clean look on hover */
-  color: #000; /* Change as needed */
 }
 
 .results-page {
@@ -229,4 +189,77 @@ button {
 .excellent {
   /* background-color: #0542147c; */
   color: #054214;
+}
+
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding: 0 50px; /* Equal padding on left and right */
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding: 0 50px; /* Equal padding on left and right */
+}
+
+.question-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px; /* Adjust as needed */
+}
+
+.question-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#back-button {
+  cursor: pointer;
+  width: 40px; /* Adjust size as needed */
+  height: auto;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+}
+
+#progress-bar-background {
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+  width: calc(100% - 50px); /* Ensures the progress bar container is full width */
+  margin: 20px auto; /* Center the progress bar */
+}
+
+#progress-bar {
+  height: 8px;
+  background-color: #000;
+  border-radius: 3px;
+  width: 0%; /* Adjust this with JavaScript as the quiz progresses */
+  margin-left: 25px; /* Center the progress bar */
+  margin-top: -28px
 }
