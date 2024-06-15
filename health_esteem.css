@@ -12,7 +12,7 @@ body, html {
 }
 
 
-.cover-page, .results-page, .quiz-container {
+.cover-page, #results-page, .quiz-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -126,7 +126,7 @@ button:hover {
   color: #000; /* Change as needed */
 }
 
-.results-page {
+#results-page {
   display: none; /* Hidden until the results are shown */
   background-color: #fff;
   border-radius: 10px;

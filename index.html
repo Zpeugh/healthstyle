@@ -25,8 +25,39 @@
         </div>
     </div>
     <br>
-
-    <div class="results-page" style="display: none;">
+    <div style="display: none;" id="email-form" class="newsletter-block" style="mix-blend-mode: darken; border-radius: 0px; backdrop-filter: blur(100px)">
+        <div class="newsletter-form-wrapper">
+            <form data-form-id="666d07ac0f8b397750bb45ee" class="newsletter-form" method="POST" autocomplete="on" novalidate onsubmit="return handleFormSubmit(this);">
+                <header class="newsletter-form-header">
+                    <h2 class="newsletter-form-header-title">Subscribe for Results!</h2>
+                    <div class="newsletter-form-header-description">
+                        <p>Sign up for our zero-obligation newsletter to view your Health Esteem Quiz results!</p>
+                    </div>
+                </header>
+                <div class="newsletter-form-body">
+                    <div class="newsletter-form-fields-wrapper">
+                        <div class="newsletter-form-field-wrapper">
+                            <label for="email-field">Email Address</label>
+                            <input id="email-field" name="email" type="email" autocomplete="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="newsletter-form-button-wrapper">
+                        <button class="newsletter-form-button" type="submit" value="Sign Up">
+                            <span class="newsletter-form-button-label">Sign Up</span>
+                        </button>
+                    </div>
+                    <div class="captcha-container"></div>
+                </div>
+                <div class="newsletter-form-footnote">
+                    <p></p>
+                </div>
+                    <div class="hidden form-submission-html" id="results-body">
+                        <!-- Results will be injected here -->
+                    </div>
+            </form>
+        </div>
+    </div>
+    <div id="results-page" style="display: none;">
         <h2>Health Esteem Results</h1>
         <div class="results-container">
             <p id="results-text"></p>
@@ -48,9 +79,7 @@
                     <span class="section-score-column">Biohacking:</span>
                     <span class="section-score-column" id="section-4-sum" class="section-score"></span>
                 </div>
-                <div id="results-body">
-                    <!-- Results will be injected here -->
-                </div>
+
             </div>
         </div>
     </div>

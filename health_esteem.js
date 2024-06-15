@@ -192,7 +192,7 @@ function nextQuestion() {
     displayQuestion();
     updateProgressBar();
   } else {
-    showResults(); // Calculate and show results based on scores
+    requestEmail(); // Calculate and show results based on scores
   }
 }
 
@@ -235,7 +235,27 @@ function getSectionScoreContent(percent) {
   return 'EXCELLENT';
 }
 
+function handleFormSubmit(form) {
+  (new Y.Squarespace.FormSubmit(form)).submit({
+      formId: '666d07ac0f8b397750bb45ee',
+      collectionId: '663c3293b5f91a0160fda2cb',
+      objectName: 'yui_3_17_2_1_1718419357414_1743'
+  });
+  showResults();
+}
+
+function requestEmail() {
+  const emailForm = document.querySelector('#email-form');
+  emailForm.style.display = 'block';
+  const resultsPage = document.querySelector('#results-page');
+  resultsPage.style.display = 'none';
+}
+
 function showResults() {
+  const emailForm = document.querySelector('#email-form');
+  emailForm.style.display = 'none';
+  const resultsPage = document.querySelector('#results-page');
+  emailForm.style.display = 'flex';
   // Calculate total score and decide the result
   let totalScore = sectionScores.reduce((a, b) => a + b, 0);
   let resultText;
@@ -268,7 +288,7 @@ function showResults() {
   const sectionPercentages = sectionScores.map(score => Math.round((score / maxScorePerSection) * 100));
 
   document.querySelector('.quiz-container').style.display = 'none';
-  document.querySelector('.results-page').style.display = 'flex';
+  document.querySelector('#results-page').style.display = 'flex';
   document.getElementById('results-header').textContent = resultText;
   document.getElementById('results-header').className = resultClass;
   document.getElementById('results-body').innerHTML = resultBody;
@@ -288,6 +308,6 @@ function showResults() {
 function restartQuiz() {
   currentQuestionIndex = 0;
   sectionScores = [0, 0, 0, 0];
-  document.querySelector('.results-page').style.display = 'none';
+  document.querySelector('#results-page').style.display = 'none';
   document.querySelector('.cover-page').style.display = 'flex';
 }
