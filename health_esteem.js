@@ -71,16 +71,13 @@ const questions = [
 const result0 = {
     header: "A WORK IN PROGRESS",
     body: `
-        <h2>Hey beautiful, we can see you may need a little help increasing your Health Esteem.</h2>
-        <h1>
-            Your <strong>Health Esteem quiz results indicate that you are A WORK IN PROGRESS</strong> and there is a need
+        <p>Hey beautiful, we can see you may need a little help increasing your Health Esteem.</p>
+        </h3>
+            Your Health Esteem quiz results indicate that you are A WORK IN PROGRESS and there is a need
             for improvement.
-        </h1>
+        </h3>
         <p>
-            Please do not fret.
-            <br />
-            <br />
-            We get that there are a lot of unknowns and roadblocks that can make healthy,
+            Please do not fret.  We get that there are a lot of unknowns and roadblocks that can make healthy,
             <br />
             successful self-care routines and approaches to biological aging challenging. We are here to help elevate
             you!<br /><br />If you are looking for guidance, a trusted sounding board, and someone to simplify how you can
@@ -92,10 +89,10 @@ const result0 = {
 };
 
 const result1 = {
-    header: "Middle of the Road- Average",
+    header: "MIDDLE OF THE ROAD",
     body: `
-        <h2>Hey there! We can see you are working on your health and have identified there is room for improvement.</h2>
-        <h1>Your <strong>Health Esteem is rated as Middle of the Road- Average.</strong></h1>
+        <p>Hey there! We can see you are working on your health and have identified there is room for improvement.</h3>
+        <h3>Your Health Esteem is rated as Middle of the Road- Average.</h3>
         <p>
             We can see the efforts you are putting into your self-care and how special you are! There is room for
             improvement when it comes to supporting your self-care, health, and biological aging process. We understand that
@@ -115,8 +112,8 @@ const result1 = {
 const result2 = {
     header: "GOOD",
     body: `
-        <h2>Wow, we can tell you are invested in your health!</h2>
-        <h1>Your <strong>Health Esteem is rated as solidly- GOOD.</strong></h1>
+        <p>Wow, we can tell you are invested in your health!</h3>
+        <h3>Your Health Esteem is rated as solidly- GOOD.</h3>
         <p>
             Keep up the good work! We can see that you are engaged and working on your health regularly. Caring for your
             health in ways that give optimal results and slow your biological aging doesn't just involve eating right and
@@ -130,7 +127,7 @@ const result2 = {
 const result3 = {
     header: "EXCELLENT",
     body: `
-    <h1>Congratulations, your <strong>Health Esteem is rated as- EXCELLENT!</strong></h1>
+    <h2>Congratulations, your Health Esteem is rated as- EXCELLENT!</h2>
     <p>
         We can tell you are a ROCKSTAR and have made taking care of your health a top priority. You probably already
         know the keys to maintaining your health, but just in case you don't here they are:<br />-Time<br />-Dedication<br />-Consistency<br />-Knowledge
