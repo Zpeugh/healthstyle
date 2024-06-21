@@ -1,3 +1,6 @@
+const EMAIL_POPUP_SELECTOR = '.fe-block-yui_3_17_2_1_1718419357414_1743';
+const QUIZ_CONTAINER_SELECTOR = '.fe-block-yui_3_17_2_1_1715711661214_1870';
+
 let currentPage = 0;
 
 const questions = [
@@ -71,7 +74,7 @@ const questions = [
 const result0 = {
     header: "A WORK IN PROGRESS",
     body: `
-        <p>Hey beautiful, we can see you may need a little help increasing your Health Esteem.</p>
+        <p><i>Hey beautiful, we can see you may need a little help increasing your Health Esteem.</i></p>
         </h3>
             Your Health Esteem quiz results indicate that you are A WORK IN PROGRESS and there is a need
             for improvement.
@@ -91,7 +94,7 @@ const result0 = {
 const result1 = {
     header: "MIDDLE OF THE ROAD",
     body: `
-        <p>Hey there! We can see you are working on your health and have identified there is room for improvement.</h3>
+        <p><i>Hey there! We can see you are working on your health and have identified there is room for improvement.</i></h3>
         <h3>Your Health Esteem is rated as Middle of the Road- Average.</h3>
         <p>
             We can see the efforts you are putting into your self-care and how special you are! There is room for
@@ -112,7 +115,7 @@ const result1 = {
 const result2 = {
     header: "GOOD",
     body: `
-        <p>Wow, we can tell you are invested in your health!</h3>
+        <p><i>Wow, we can tell you are invested in your health!</i></h3>
         <h3>Your Health Esteem is rated as solidly- GOOD.</h3>
         <p>
             Keep up the good work! We can see that you are engaged and working on your health regularly. Caring for your
@@ -127,7 +130,7 @@ const result2 = {
 const result3 = {
     header: "EXCELLENT",
     body: `
-    <h2>Congratulations, your Health Esteem is rated as- EXCELLENT!</h2>
+    <h3>Congratulations, your Health Esteem is rated as- EXCELLENT!</h3>
     <p>
         We can tell you are a ROCKSTAR and have made taking care of your health a top priority. You probably already
         know the keys to maintaining your health, but just in case you don't here they are:<br />-Time<br />-Dedication<br />-Consistency<br />-Knowledge
@@ -235,27 +238,28 @@ function getSectionScoreContent(percent) {
   return 'EXCELLENT';
 }
 
-function handleFormSubmit(form) {
-  (new Y.Squarespace.FormSubmit(form)).submit({
-      formId: '666d07ac0f8b397750bb45ee',
-      collectionId: '663c3293b5f91a0160fda2cb',
-      objectName: 'yui_3_17_2_1_1718419357414_1743'
-  });
-  showResults();
-}
 
 function requestEmail() {
-  const emailForm = document.querySelector('#email-form');
-  emailForm.style.display = 'block';
-  const resultsPage = document.querySelector('#results-page');
-  resultsPage.style.display = 'none';
+  emailPopup = document.querySelector(EMAIL_POPUP_SELECTOR);
+  quizContainer = document.querySelector(QUIZ_CONTAINER_SELECTOR);
+  quizContainer.style.display = 'none';
+  quizContainer.style.zIndex = '-1';
+  emailPopup.style.display = 'block';
+  emailPopup.style.zIndex = '999';
+
+  function pollForResultsPage() {
+    if (!document.getElementById('results-page')) {
+      console.log('Waiting for #results-page to exist');
+      setTimeout(pollForResultsPage, 500);
+    } else {
+      showResults();
+    }
+  }
+
+  pollForResultsPage();
 }
 
 function showResults() {
-  const emailForm = document.querySelector('#email-form');
-  emailForm.style.display = 'none';
-  const resultsPage = document.querySelector('#results-page');
-  emailForm.style.display = 'flex';
   // Calculate total score and decide the result
   let totalScore = sectionScores.reduce((a, b) => a + b, 0);
   let resultText;
@@ -286,9 +290,6 @@ function showResults() {
   // Show section scores as percentages
   const maxScorePerSection = 10 * 5; // 10 questions, 5 points each
   const sectionPercentages = sectionScores.map(score => Math.round((score / maxScorePerSection) * 100));
-
-  document.querySelector('.quiz-container').style.display = 'none';
-  document.querySelector('#results-page').style.display = 'flex';
   document.getElementById('results-header').textContent = resultText;
   document.getElementById('results-header').className = resultClass;
   document.getElementById('results-body').innerHTML = resultBody;
@@ -303,11 +304,4 @@ function showResults() {
   document.getElementById('section-2-sum').textContent = getSectionScoreContent(sectionPercentages[1]);
   document.getElementById('section-3-sum').textContent = getSectionScoreContent(sectionPercentages[2]);
   document.getElementById('section-4-sum').textContent = getSectionScoreContent(sectionPercentages[3]);
-}
-
-function restartQuiz() {
-  currentQuestionIndex = 0;
-  sectionScores = [0, 0, 0, 0];
-  document.querySelector('#results-page').style.display = 'none';
-  document.querySelector('.cover-page').style.display = 'flex';
 }
