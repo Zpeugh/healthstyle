@@ -1,34 +1,38 @@
-p, h1, h2, h3 {
-     -webkit-hyphens: manual !important;
-        -moz-hyphens: manual !important;
-         -ms-hyphens: manual !important;
-             hyphens: manual !important;
-   }
+p,
+h1,
+h2,
+h3 {
+  -webkit-hyphens: manual !important;
+  -moz-hyphens: manual !important;
+  -ms-hyphens: manual !important;
+  hyphens: manual !important;
+}
 
-@media only screen and (max-width: 676px){
-
+@media only screen and (max-width: 676px) {
   footer {
     text-align: center;
   }
   nav.sqs-svg-icon--list {
-  	text-align: center !important;
+    text-align: center !important;
   }
 
-  .newsletter-form-header
-   {
+  .newsletter-form-header {
     text-align: center;
   }
 }
 
 @font-face {
-  font-family: 'MARIGOLD SANS';
+  font-family: "MARIGOLD SANS";
   font-weight: light;
-  src:
-url(https://static1.squarespace.com/static/65143542c2744a1a9dbc1bc5/t/651446ebbca2315e3a15c848/1695827691217/MarigoldSans.otf);
+  src: url(https://static1.squarespace.com/static/65143542c2744a1a9dbc1bc5/t/651446ebbca2315e3a15c848/1695827691217/MarigoldSans.otf);
 }
 
-h1, h2, h3, h4, p {
-  font-family: 'MARIGOLD SANS';
+h1,
+h2,
+h3,
+h4,
+p {
+  font-family: "MARIGOLD SANS";
   letter-spacing: 1px;
 }
 
@@ -51,8 +55,9 @@ h1, h2, h3, h4, p {
     z-index: 50;
   }
 
-
-  .cover-page, #results-page, .quiz-container {
+  .cover-page,
+  #results-page,
+  .quiz-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,7 +67,7 @@ h1, h2, h3, h4, p {
   }
 
   .cover-page {
-    height: 100%
+    height: 100%;
   }
 
   .quiz-container {
@@ -131,7 +136,8 @@ h1, h2, h3, h4, p {
     display: none;
   }
 
-  input[type="radio"]:checked + label, input[type="radio"]:hover + label {
+  input[type="radio"]:checked + label,
+  input[type="radio"]:hover + label {
     background-color: #000;
     color: #fff;
     cursor: pointer;
@@ -154,10 +160,9 @@ h1, h2, h3, h4, p {
   }
 }
 
-
 /* Quiz form and results styling */
 
-.fe-block-yui_3_17_2_1_1718419357414_1743{
+.fe-block-yui_3_17_2_1_1718419357414_1743 {
   display: none;
   z-index: 0;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -211,7 +216,7 @@ h1, h2, h3, h4, p {
   }
 
   .section-score-row {
-    font-family: 'halyard-display';
+    font-family: "halyard-display";
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -232,9 +237,9 @@ h1, h2, h3, h4, p {
     /* text-transform: uppercase; */
   }
 
-  h2{
+  h2 {
     margin: 5px 0;
-    font-family: 'halyard-display';
+    font-family: "halyard-display";
     text-transform: uppercase;
   }
 
